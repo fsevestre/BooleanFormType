@@ -1,0 +1,27 @@
+{
+  "name": "fsevestre/boolean-form-type",
+  "description": "Boolean form type for Symfony REST APIs",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Florent SEVESTRE"
+    }
+  ],
+  "homepage": "https://github.com/fsevestre/BooleanFormType",
+  "require": {
+    "php": ">=5.3.9",
+    "symfony/form": "~2.7|~3.0|~4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.5"
+  },
+  "autoload": {
+    "psr-4": { "FSevestre\\BooleanFormType\\": "src/" }
+  },
+  "autoload-dev": {
+    "psr-4": { "FSevestre\\BooleanFormTypeTest\\": "tests/" }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
