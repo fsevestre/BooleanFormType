@@ -3,6 +3,7 @@ Boolean form type
 
 [![Build Status](https://travis-ci.org/fsevestre/BooleanFormType.svg?branch=master)](https://travis-ci.org/fsevestre/BooleanFormType)
 [![Coverage Status](https://coveralls.io/repos/github/fsevestre/BooleanFormType/badge.svg?branch=master)](https://coveralls.io/github/fsevestre/BooleanFormType?branch=master)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/fsevestre/BooleanFormType/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fsevestre/BooleanFormType)
 
 
 Boolean form type for Symfony REST APIs.
