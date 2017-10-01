@@ -1,0 +1,41 @@
+language: php
+
+dist: trusty
+
+php:
+  - hhvm
+  - nightly
+  - '7.1'
+  - '7.0'
+  - '5.6'
+  - '5.5'
+
+env:
+  - SYMFONY_VERSION=2.8.*
+  - SYMFONY_VERSION=3.0.*
+  - SYMFONY_VERSION=3.1.*
+  - SYMFONY_VERSION=3.2.*
+  - SYMFONY_VERSION=3.3.*
+
+matrix:
+  fast_finish: true
+  include:
+    - php: '5.4'
+      env: SYMFONY_VERSION=2.8.*
+      dist: trusty
+    - php: '5.3'
+      env: SYMFONY_VERSION=2.8.*
+      dist: precise
+  allow_failures:
+    - php: nightly
+    - php: hhvm
+
+before_install:
+  - composer self-update
+  - composer require --no-update symfony/form ${SYMFONY_VERSION}
+
+install:
+    - composer install --no-interaction --prefer-dist
+
+script:
+    - bin/phpunit --coverage-text

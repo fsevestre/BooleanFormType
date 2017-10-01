@@ -1,6 +1,9 @@
 Boolean form type
 =================
 
+[![Build Status](https://travis-ci.org/fsevestre/BooleanFormType.svg?branch=master)](https://travis-ci.org/fsevestre/BooleanFormType)
+
+
 Boolean form type for Symfony REST APIs.
 
 
