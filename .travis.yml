@@ -35,7 +35,14 @@ before_install:
   - composer require --no-update symfony/form ${SYMFONY_VERSION}
 
 install:
-    - composer install --no-interaction --prefer-dist
+  - composer install --no-interaction --prefer-dist
+  - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+
+before_script:
+  - mkdir -p build/logs
 
 script:
-    - bin/phpunit --coverage-text
+  - bin/phpunit --coverage-clover build/logs/clover.xml
+
+after_script:
+  - php coveralls.phar -v
