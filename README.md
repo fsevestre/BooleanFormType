@@ -2,6 +2,7 @@ Boolean form type
 =================
 
 [![Build Status](https://travis-ci.org/fsevestre/BooleanFormType.svg?branch=master)](https://travis-ci.org/fsevestre/BooleanFormType)
+[![Coverage Status](https://coveralls.io/repos/github/fsevestre/BooleanFormType/badge.svg?branch=master)](https://coveralls.io/github/fsevestre/BooleanFormType?branch=master)
 
 
 Boolean form type for Symfony REST APIs.
