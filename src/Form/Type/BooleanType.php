@@ -12,18 +12,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class BooleanType extends AbstractType
 {
-    public static $FALSE_VALUES = array(0, '0', false, 'false');
-    public static $TRUE_VALUES = array(1, '1', true, 'true');
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addModelTransformer(new BooleanTypeToBooleanTransformer());
+        $builder->addModelTransformer(new BooleanTypeToBooleanTransformer($options['true_values'], $options['false_values']));
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'compound' => false,
+            'true_values' => array(1, '1', true, 'true'),
+            'false_values' => array(0, '0', false, 'false'),
         ));
     }
 }

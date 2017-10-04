@@ -2,7 +2,6 @@
 
 namespace FSevestre\BooleanFormTypeTest\Form\Type;
 
-use FSevestre\BooleanFormType\Form\Type\BooleanType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -27,7 +26,7 @@ class BooleanTypeTest extends TypeTestCase
     {
         return array_map(function($value) {
             return array($value);
-        }, BooleanType::$TRUE_VALUES);
+        }, array(1, '1', true, 'true'));
     }
 
     /**
@@ -48,7 +47,7 @@ class BooleanTypeTest extends TypeTestCase
         return array_merge(
             array_map(function($value) {
                 return array($value);
-            }, BooleanType::$FALSE_VALUES),
+            }, array(0, '0', false, 'false')),
             array(array(null), array(''))
         );
     }

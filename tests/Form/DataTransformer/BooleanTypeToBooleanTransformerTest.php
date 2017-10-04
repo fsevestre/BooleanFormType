@@ -3,7 +3,6 @@
 namespace FSevestre\BooleanFormTypeTest\Form\DataTransformer;
 
 use FSevestre\BooleanFormType\Form\DataTransformer\BooleanTypeToBooleanTransformer;
-use FSevestre\BooleanFormType\Form\Type\BooleanType;
 
 /**
  * @author Florent SEVESTRE
@@ -12,21 +11,21 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
 {
     public function testTransformNull()
     {
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
 
         static::assertFalse($transformer->transform(null));
     }
 
     public function testTransformTrue()
     {
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
 
         static::assertTrue($transformer->transform(true));
     }
 
     public function testTransformFalse()
     {
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
 
         static::assertFalse($transformer->transform(false));
     }
@@ -38,7 +37,7 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Symfony\Component\Form\Exception\TransformationFailedException');
 
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
         $transformer->transform($value);
     }
 
@@ -58,7 +57,7 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
 
     public function testReverseTransformNull()
     {
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
 
         static::assertFalse($transformer->reverseTransform(null));
     }
@@ -68,7 +67,7 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testReverseTransformTrue($value)
     {
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
 
         static::assertTrue($transformer->reverseTransform($value));
     }
@@ -77,7 +76,7 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
     {
         return array_map(function($value) {
             return array($value);
-        }, BooleanType::$TRUE_VALUES);
+        }, array(1, '1', true, 'true'));
     }
 
     /**
@@ -85,7 +84,7 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testReverseTransformFalse($value)
     {
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
 
         static::assertFalse($transformer->reverseTransform($value));
     }
@@ -94,14 +93,14 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
     {
         return array_map(function($value) {
             return array($value);
-        }, BooleanType::$FALSE_VALUES);
+        }, array(0, '0', false, 'false'));
     }
 
     public function testReverseTransformFailed()
     {
         $this->setExpectedException('Symfony\Component\Form\Exception\TransformationFailedException');
 
-        $transformer = new BooleanTypeToBooleanTransformer();
+        $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
         $transformer->transform('');
     }
 }
