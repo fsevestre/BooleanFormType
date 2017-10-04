@@ -2,7 +2,6 @@
 
 namespace FSevestre\BooleanFormType\Form\DataTransformer;
 
-use FSevestre\BooleanFormType\Form\Type\BooleanType;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
@@ -11,6 +10,15 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
  */
 final class BooleanTypeToBooleanTransformer implements DataTransformerInterface
 {
+    private $trueValues;
+    private $falseValues;
+
+    public function __construct(array $trueValues, array $falseValues)
+    {
+        $this->trueValues = $trueValues;
+        $this->falseValues = $falseValues;
+    }
+
     public function transform($value)
     {
         if (null === $value) {
@@ -30,9 +38,9 @@ final class BooleanTypeToBooleanTransformer implements DataTransformerInterface
             return false; // `false` and empty values are converted to `null` during form submission.
         }
 
-        if (in_array($value, BooleanType::$TRUE_VALUES, true)) {
+        if (in_array($value, $this->trueValues, true)) {
             return true;
-        } elseif (in_array($value, BooleanType::$FALSE_VALUES, true)) {
+        } elseif (in_array($value, $this->falseValues, true)) {
             return false;
         }
 

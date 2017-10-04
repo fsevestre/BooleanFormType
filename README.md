@@ -31,8 +31,21 @@ Usage
 $builder->add('enabled', BooleanType::class);
 ```
 
-The form type use a data transformer which will transform the value to `true` (`1`, `'1'`, `true` or `'true'`)
-or `false` (`0`, `'0'`, `false` or `'false'`).
+By default, the form type use a data transformer which will transform the value to `true` (`1`, `'1'`, `true` and
+`'true'`) or `false` (`0`, `'0'`, `false` and `'false'`).
+
+If you want to support more values, you can override the `true_values` and `false_values` form type options:
+
+```php
+$builder
+    ->add('enabled', BooleanType::class,
+        array(
+            'true_values' => array(1, '1', true, 'true', 'on', 'yes'),
+            'false_values' => array(0, '0', false, 'false', 'off', 'no'),
+        )
+    )
+;
+```
 
 > **Note:** The form type is not intended to be displayed on a browser: use the built-in `CheckboxType` form type
 > provided by Symfony instead.
