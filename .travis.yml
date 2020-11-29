@@ -3,32 +3,19 @@ language: php
 dist: trusty
 
 php:
-  - hhvm
+  - '7.2'
+  - '7.3'
+  - '7.4'
   - nightly
-  - '7.1'
-  - '7.0'
-  - '5.6'
-  - '5.5'
 
 env:
-  - SYMFONY_VERSION=2.8.*
-  - SYMFONY_VERSION=3.0.*
-  - SYMFONY_VERSION=3.1.*
-  - SYMFONY_VERSION=3.2.*
-  - SYMFONY_VERSION=3.3.*
+  - SYMFONY_VERSION=5.0.*
+  - SYMFONY_VERSION=5.1.*
 
 matrix:
   fast_finish: true
-  include:
-    - php: '5.4'
-      env: SYMFONY_VERSION=2.8.*
-      dist: trusty
-    - php: '5.3'
-      env: SYMFONY_VERSION=2.8.*
-      dist: precise
   allow_failures:
     - php: nightly
-    - php: hhvm
 
 before_install:
   - composer self-update
@@ -36,7 +23,7 @@ before_install:
 
 install:
   - composer install --no-interaction --prefer-dist
-  - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+  - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.4.2/php-coveralls.phar
 
 before_script:
   - mkdir -p build/logs
