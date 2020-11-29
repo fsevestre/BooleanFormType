@@ -3,11 +3,13 @@
 namespace FSevestre\BooleanFormTypeTest\Form\DataTransformer;
 
 use FSevestre\BooleanFormType\Form\DataTransformer\BooleanTypeToBooleanTransformer;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
  * @author Florent SEVESTRE
  */
-class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
+class BooleanTypeToBooleanTransformerTest extends TestCase
 {
     public function testTransformNull()
     {
@@ -35,7 +37,7 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testTransformFailed($value)
     {
-        $this->setExpectedException('Symfony\Component\Form\Exception\TransformationFailedException');
+        $this->expectException(TransformationFailedException::class);
 
         $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
         $transformer->transform($value);
@@ -98,7 +100,7 @@ class BooleanTypeToBooleanTransformerTest extends \PHPUnit_Framework_TestCase
 
     public function testReverseTransformFailed()
     {
-        $this->setExpectedException('Symfony\Component\Form\Exception\TransformationFailedException');
+        $this->expectException(TransformationFailedException::class);
 
         $transformer = new BooleanTypeToBooleanTransformer(array(1, '1', true, 'true'), array(0, '0', false, 'false'));
         $transformer->transform('');
