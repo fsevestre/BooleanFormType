@@ -9,8 +9,7 @@ php:
   - nightly
 
 env:
-  - SYMFONY_VERSION=5.0.*
-  - SYMFONY_VERSION=5.1.*
+  - SYMFONY_VERSION=6.2.*
 
 matrix:
   fast_finish: true

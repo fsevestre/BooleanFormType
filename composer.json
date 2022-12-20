@@ -10,7 +10,7 @@
   "homepage": "https://github.com/fsevestre/BooleanFormType",
   "require": {
     "php": ">=7.2.5",
-    "symfony/form": "~5.0"
+    "symfony/form": "^6.2"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.5"
